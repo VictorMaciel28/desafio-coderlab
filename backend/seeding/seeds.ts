@@ -5,54 +5,51 @@ import { Category } from '../src/category/category.entity';
 import { Product } from '../src/products/product.entity';
 import { User } from '../src/users/user.entity';
 
-const seed = async (dataSource: DataSource) => {
-    const categoryRepository = dataSource.getRepository(Category);
-    const productRepository = dataSource.getRepository(Product);
-    const userRepository = dataSource.getRepository(User);
+async function createCategories(categoryRepository) {
+  return Promise.all([
+    categoryRepository.save({ name: 'Couvert' }),
+    categoryRepository.save({ name: 'Carnes' }),
+    categoryRepository.save({ name: 'Saladas' }),
+  ]);
+}
 
-    await productRepository.delete({});
-    await categoryRepository.delete({});
-    await userRepository.delete({});
-    
-    const hashedPassword = await bcrypt.hash('admin', 10);
-
-    const newUser = userRepository.create({
-      username: 'admin', 
-      password: hashedPassword,
-    });
-    
-    await userRepository.save(newUser);
-  
-    const category1 = categoryRepository.create({ name: 'Electronics' });
-    await categoryRepository.save(category1);
-  
-    const category2 = categoryRepository.create({ name: 'Books' });
-    await categoryRepository.save(category2);
-
-    for (let i = 1; i <= 10; i++) {
-      const product = productRepository.create({
-        name: `Electronic Product ${i}`,
-        qty: Math.floor(Math.random() * 50) + 1,
-        price: parseFloat((Math.random() * 1000).toFixed(2)),
-        photo: `url_to_photo_electronic_${i}`,
-        categories: [category1], 
-      });
-  
-      await productRepository.save(product);
-    }
-  
-    for (let i = 1; i <= 10; i++) {
-      const product = productRepository.create({
-        name: `Book ${i}`,
+async function createProducts(productRepository, categories) {
+  for (const [index, categoryName] of ['Couvert', 'Carne', 'Salada'].entries()) {
+    for (let i = 1; i <= 6; i++) {
+      await productRepository.save({
+        name: `${categoryName} ${i}`,
         qty: Math.floor(Math.random() * 100) + 1,
-        price: parseFloat((Math.random() * 100).toFixed(2)),
-        photo: `url_to_photo_book_${i}`,
-        categories: [category2], 
+        price: parseFloat((Math.random() * 1000).toFixed(2)),
+        photo: `url_to_photo_${categoryName.toLowerCase()}_${i}`,
+        categories: [categories[index]],
       });
-  
-      await productRepository.save(product);
     }
-  };
+  }
+}
+
+async function createUser(userRepository) {
+  const hashedPassword = await bcrypt.hash('admin', 10);
+  await userRepository.save({
+    username: 'admin',
+    password: hashedPassword,
+  });
+}
+
+async function seed(dataSource: DataSource) {
+  const categoryRepository = dataSource.getRepository(Category);
+  const productRepository = dataSource.getRepository(Product);
+  const userRepository = dataSource.getRepository(User);
+
+  await userRepository.delete({});
+  await categoryRepository.delete({});
+  await productRepository.delete({});
+
+  await createUser(userRepository);
+
+  const categories = await createCategories(categoryRepository);
+
+  await createProducts(productRepository, categories);
+}
 
 dataSourceConfig.initialize()
   .then(async (dataSource) => {
@@ -61,4 +58,4 @@ dataSourceConfig.initialize()
     console.log('Seeding complete.');
     await dataSource.destroy();
   })
-  .catch(error => console.log(error));
+  .catch(error => console.log('Error during seeding:', error));
