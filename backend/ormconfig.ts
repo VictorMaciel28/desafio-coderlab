@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm';
 import { Product } from './src/products/product.entity'; 
 import { Category } from './src/category/category.entity'; 
+import { User } from './src/users/user.entity';
 
 export default new DataSource({
     type: "mysql",
@@ -9,7 +10,7 @@ export default new DataSource({
     username: "root",
     password: "",
     database: "coderlab",
-    entities: [Product, Category],
+    entities: [Product, Category, User],
     synchronize: true,
     logging: true,
     migrations: ['src/migrations/**/*.ts'],
