@@ -13,7 +13,8 @@ function Login() {
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         try {
-            await login(username, password);
+            const data = await login(username, password);
+            localStorage.setItem('access_token', data.access_token);
             navigate('/produtos');
         } catch (error: any) {
             setErrorMessage(error.response.data.message);
