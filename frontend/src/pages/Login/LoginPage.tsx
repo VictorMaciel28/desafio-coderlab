@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import login from '../../services/authService';
-import './Login.scss';
+import './LoginPage.scss';
 
-function Login() {
+function LoginPage() {
     const navigate = useNavigate();
     const [username, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -57,4 +57,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginPage;

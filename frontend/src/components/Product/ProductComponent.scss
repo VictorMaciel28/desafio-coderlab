@@ -3,25 +3,25 @@ h2 {
 }
 
 .product-card {
-    width: calc(23% - 1rem); // Default para tela cheia
+    width: calc(23% - 1rem); 
     border: 1px solid #ccc;
     border-radius: 2%;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    
+    h3 {
+        margin: 0.5rem 0;
+        cursor: pointer;
+    }
 
-img {
-    width: 100%;
-    height: auto;
-    border-radius: 5%;
-    cursor: pointer;
-}
-
-h3 {
-    margin: 0.5rem 0;
-    cursor: pointer;
-}
-
-p {
-    font-size: 0.9rem;
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 5%;
+        cursor: pointer;
+    }
+    
+    p {
+        font-size: 0.9rem;
+    }
 }

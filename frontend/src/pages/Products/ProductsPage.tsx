@@ -1,14 +1,14 @@
-import './Products.scss';
+import './ProductsPage.scss';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import { GroupedProducts, Product } from '../../interfaces/ProductInterface';
-import listProducts from '../../services/productService';
+import { getProducts } from '../../services/productService';
 import { useState, useEffect } from 'react';
 import ProductComponent from '../../components/Product/ProductComponent';
 
 
-function Products() {
+function ProductsPage() {
     const navigate = useNavigate();
     const [products, setProducts] = useState<Product[]>([]);
     const [groupedProducts, setGroupedProducts] = useState<GroupedProducts>({});
@@ -17,7 +17,7 @@ function Products() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const productsList: Product[] = await listProducts();
+                const productsList: Product[] = await getProducts();
                 setProducts(productsList);
 
                 const grouped: GroupedProducts = productsList.reduce((acc: GroupedProducts, product) => {
@@ -44,7 +44,6 @@ function Products() {
     return (
         <div>
             <Header />
-            {/* Renderização dos produtos agrupados por categoria */}
             <div className="product-categories">
                 {Object.keys(groupedProducts).length > 0 ? (
                     Object.entries(groupedProducts).map(([category, products]) => (
@@ -52,7 +51,7 @@ function Products() {
                             <h2>{category}</h2>
                             <div className="products-grid">
                                 {products.map(product => (
-                                    <ProductComponent {...product}/>
+                                    <ProductComponent {...product} />
                                 ))}
                             </div>
                         </div>
@@ -66,4 +65,4 @@ function Products() {
     );
 }
 
-export default Products;
+export default ProductsPage;

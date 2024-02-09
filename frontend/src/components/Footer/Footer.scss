@@ -7,12 +7,12 @@
   bottom: 0;
   width: 100%;
   z-index: 1000;
-  visibility: hidden; // Inicialmente oculto
+  visibility: hidden;
   transition: visibility 0.3s, opacity 0.3s ease-in-out;
-  opacity: 0; // Inicialmente transparente
+  opacity: 0;
 }
 
 .footer--visible {
-  visibility: visible; // Torna visível
-  opacity: 1; // Torna opaco
+  visibility: visible;
+  opacity: 1; 
 }

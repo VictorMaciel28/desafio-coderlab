@@ -2,12 +2,12 @@
   background-color: red;
   color: white;
   text-align: left;
-  padding: 10px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
   transition: top 0.3s;
+  padding-left:2%;
 }
 
 .header--hidden {

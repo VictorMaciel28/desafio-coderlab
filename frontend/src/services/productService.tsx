@@ -11,10 +11,17 @@ function getHeader() {
     };
 }
 
-async function listProducts(): Promise<Product[]> {
+export async function getProducts(): Promise<Product[]> {
     const header = getHeader();
     const response = await axios.get<Product[]>(`${baseURL}/product`, header);
     return response.data;
 }
 
-export default listProducts;
+
+export async function getProduct(id?: string): Promise<Product> {
+    const header = getHeader();
+    const response = await axios.get<Product>(`${baseURL}/product/`+id, header);
+    return response.data;
+}
+
+
