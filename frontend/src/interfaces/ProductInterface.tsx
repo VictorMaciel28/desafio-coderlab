@@ -7,4 +7,8 @@ export interface Product {
     qty: number;
     price: number;
     photo: string;
-  }
+}
+
+export interface GroupedProducts {
+    [key: string]: Product[];
+}

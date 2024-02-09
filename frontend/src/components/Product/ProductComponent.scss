@@ -1,0 +1,27 @@
+h2 {
+    margin-bottom: 1rem;
+}
+
+.product-card {
+    width: calc(23% - 1rem); // Default para tela cheia
+    border: 1px solid #ccc;
+    border-radius: 2%;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+h3 {
+    margin: 0.5rem 0;
+    cursor: pointer;
+}
+
+p {
+    font-size: 0.9rem;
+}

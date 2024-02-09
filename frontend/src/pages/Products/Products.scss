@@ -1,66 +1,48 @@
+.product-categories {
+  .category {
+    margin-bottom: 1rem;
+    padding: 5%;
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    .products-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: left;
+    }
+  }
+}
+
 $small: 576px; 
 $medium: 768px;
 $large: 992px; 
 $xlarge: 1200px;
 
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url('../../images/background.jpg');
-  background-size: cover;
-  background-position: center;
+@media (max-width: $xlarge) {
+  .product-categories .category .products-grid .product-card {
+    width: calc(30% - 1rem); 
+  }
 }
 
-.login-form {
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
-  color:white;
-  opacity: 90%;
-  width: 80%;
-
-  @media (min-width: $small) {
-    width: 50%; 
+@media (max-width: $large) {
+  .product-categories .category .products-grid .product-card {
+    width: calc(46% - 1rem); 
   }
-  
-  @media (min-width: $xlarge) {
-    width: 20%; 
+}
+
+@media (max-width: $medium) {
+  .product-categories .category .products-grid .product-card {
+    width: calc(45% - 1rem); 
   }
+}
 
-  h2 {
-    margin-bottom: 20px;
+@media (max-width: $small) {
+  .product-categories .category .products-grid .product-card {
+    width: 90%;
   }
-
-  .form-group {
-    margin-bottom: 15px;
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input {
-      width: 94%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: darkblue;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: large;
-
-    &:hover {
-      background-color: #0056b3;
-    }
+  .product-categories {
+    margin: 5%;
   }
 }

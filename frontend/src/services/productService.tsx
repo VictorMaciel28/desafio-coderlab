@@ -3,13 +3,18 @@ import { Product } from '../interfaces/ProductInterface';
 
 const baseURL = 'http://localhost:4000';
 
-async function listProducts(): Promise<Product[]> {
-    const response = await axios.get<Product[]>(`${baseURL}/product`, {
+function getHeader() {
+    return {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('access_token')}`
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`
         }
-      });
+    };
+}
+
+async function listProducts(): Promise<Product[]> {
+    const header = getHeader();
+    const response = await axios.get<Product[]>(`${baseURL}/product`, header);
     return response.data;
-};
+}
 
 export default listProducts;

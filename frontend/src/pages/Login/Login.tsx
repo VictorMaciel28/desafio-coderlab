@@ -47,7 +47,7 @@ function Login() {
                     />
                 </div>
                 {showError && (
-                    <span style={{ color: 'white', display: 'block', margin: '10px' }}>
+                    <span style={{ color: 'red', display: 'block', margin: '10px' }}>
                         {errorMessage}
                     </span>
                 )}
