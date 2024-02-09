@@ -27,6 +27,12 @@
   height: 400px;
 }
 
+.product-backbone {
+  @extend .product-image; 
+  opacity: 0.1%;
+}
+
+
 .product-details {
   padding: 20px;
   text-align: center;

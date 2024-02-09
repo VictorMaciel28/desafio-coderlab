@@ -15,7 +15,7 @@ function ProductsPage() {
     const [error, setError] = useState<string>('');
 
     useEffect(() => {
-        const fetchProducts = async () => {
+        (async () => {
             try {
                 const productsList: Product[] = await getProducts();
                 setProducts(productsList);
@@ -29,13 +29,11 @@ function ProductsPage() {
                 }, {});
 
                 setGroupedProducts(grouped);
-            } catch (e) {
-                setError('Falha ao carregar produtos');
+            } catch (err) {
                 navigate('/');
             }
-        };
+        })();
 
-        fetchProducts();
     }, []);
     if (error) {
         return <div>Erro: {error}</div>;

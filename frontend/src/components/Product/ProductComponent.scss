@@ -9,6 +9,7 @@ h2 {
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     
+
     h3 {
         margin: 0.5rem 0;
         cursor: pointer;
@@ -19,9 +20,11 @@ h2 {
         height: auto;
         border-radius: 5%;
         cursor: pointer;
+        transition: transform 0.5s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
-    p {
-        font-size: 0.9rem;
+    img:hover {
+        transform: scale(1.05);
     }
 }

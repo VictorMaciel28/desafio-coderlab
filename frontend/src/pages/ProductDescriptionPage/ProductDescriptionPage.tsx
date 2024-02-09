@@ -19,7 +19,7 @@ const ProductDescriptionPage = () => {
                 const response = await getProduct(id);
                 setProduct(response);
             } catch (err) {
-                setError('Falha ao buscar os dados do produto.');
+                navigate('/');
             }
         };
 
@@ -32,7 +32,22 @@ const ProductDescriptionPage = () => {
     }
 
     if (!product) {
-        return <div>Produto não encontrado.</div>;
+        return (
+            <div>
+                <Header />
+                <div className="product-page">
+                    <div className="product-presentation">
+                        <div className="product-details">
+                            <img src={`../images/backbone.jpg`} alt="Não encontrado, tente novamente" className="product-backbone" />
+                            <p>Quantidade disponível: -</p>
+                            <p>Preço: R$ -</p>
+                            <p>Tipo de prato: -</p>
+                            <button onClick={() => navigate(-1)} className="btn-primary">Voltar</button>
+                        </div>
+                    </div>
+                </div>
+                <Footer />
+            </div>)
     }
 
     return (
