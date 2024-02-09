@@ -1,3 +1,30 @@
+## Instalação:
+
+- Configurar .env em /backend como exemplo:
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=
+DB_DATABASE=coderlab
+PORT=4000
+
+- Configurar .env em /frontend como exemplo:
+REACT_APP_API_URL=http://localhost
+REACT_APP_API_PORT=4000
+PORT=3000
+
+- A aplicação sobe com Docker na pasta root, os Dockerfile rodam:
+
+- Backend:
+### npm install
+### npm run migrate
+### npm run seed
+### npm start
+
+- Fronted:
+### npm install
+### npm start
+
 ## 1. Objetivo
 O objetivo deste teste é montar uma API para gerenciar um cardápio online. E
 mostrar os produtos de um cardápio no frontend
