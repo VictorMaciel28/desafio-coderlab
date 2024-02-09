@@ -13,8 +13,13 @@ REACT_APP_API_URL=http://localhost<br>
 REACT_APP_API_PORT=4000<br>
 PORT=3000
 
-- A aplicação sobe com Docker na pasta root, os Dockerfile rodam:
+- A aplicação sobe com Docker na pasta root:
+```bash
+$ docker-compose build
+$ docker-compose up
+```
 
+Os Dockerfiles rodam os scripts:
 - Backend:
 ```bash
 $ npm install
